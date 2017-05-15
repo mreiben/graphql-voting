@@ -12,8 +12,7 @@ const routes = require('./routes');
 
 const app = express();
 
-// Replace with your mongoLab URI
-const MONGO_URI = 'mongodb://stephengrider:stephengrider@ds131139.mlab.com:31139/facespace';
+const MONGO_URI = 'mongodb://user:user@ds139761.mlab.com:39761/graphql-voting-app';
 
 mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI);

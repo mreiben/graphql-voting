@@ -9,14 +9,28 @@ const {
   GraphQLNonNull
 } = graphql;
 
+const UserType = require('./types/user_type')
+
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
-  fields: {}
+  fields: {
+    user: {
+      type: UserType,
+      args: { id: { type: GraphQLString } },
+      resolve(parentValue, args, req) {
+        return req.user;
+      }
+    }
+  }
 });
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
-  fields: {}
+  fields: {
+    addPoll: {
+      type: UserType
+    }
+  }
 });
 
 module.exports = new GraphQLSchema({

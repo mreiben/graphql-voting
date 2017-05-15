@@ -1,2 +1,2 @@
-# GraphQLSimpleStarter
-Starter project for a course on GraphQL @ Udemy.com
+# FCC Voting App
+freeCodeCamp project using GraphQL, React and Passport
