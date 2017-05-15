@@ -6,7 +6,7 @@ const {
   GraphQLList
 } = graphql;
 
-const UserType = require('.user_type')
+const UserType = require('./user_type')
 
 const PollType = new GraphQLObjectType({
   name: 'PollType',
@@ -14,9 +14,8 @@ const PollType = new GraphQLObjectType({
     id: { type: GraphQLID },
     title: { type: GraphQLString },
     author: { type: UserType },
-    users: { new GraphQLList(UserType) },
-    options: { type: }
-
+    users: { type: new GraphQLList(UserType) },
+    options: { type: new GraphQLList(GraphQLString) }
   })
 });
 

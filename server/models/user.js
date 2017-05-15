@@ -4,8 +4,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  email: String,
-  password: String
+  email: { type: String} ,
+  password: { type: String },
+  polls: [{
+    type: Schema.Types.ObjectId,
+    ref: 'polls'
+  }]
 });
 
 UserSchema.pre('save', function save(next) {
