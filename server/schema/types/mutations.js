@@ -1,5 +1,5 @@
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList } = graphql;
 const mongoose = require('mongoose');
 const Poll = mongoose.model('poll');
 const User = mongoose.model('user');
@@ -16,7 +16,19 @@ const mutation = new GraphQLObjectType({
         author: { type: GraphQLID }
       },
       resolve(parentValue, { title, author }) {
-        return (new Poll({ title, author, options })).save()
+        return (new Poll({ title, author })).save()
+      }
+    },
+    addUser: {
+      type: UserType,
+      args: {
+        name: { type: GraphQLString },
+        //id: { type: GraphQLID },
+        email: { type: GraphQLString },
+        password: { type: GraphQLString }
+      },
+      resolve(parentValue, { name, email, password, polls }){
+        return (new User({ name, email, password, polls })).save();
       }
     }
     //
