@@ -6,15 +6,34 @@ const {
   GraphQLList
 } = graphql;
 
-const PollType = require('./poll_type')
+const PollType = require('./poll_type');
+//console.log(PollType);
 
 const UserType = new GraphQLObjectType({
   name: 'UserType',
   fields: () => ({
+    name: { type: GraphQLString },
     id: { type: GraphQLID },
     email: { type: GraphQLString },
-    polls: { type: [PollType] }
+    polls: { type: new GraphQLList(PollType) }
   })
 });
 
 module.exports = UserType;
+
+
+// const UserType = require('./user_type');
+// console.log(UserType);
+//
+// const PollType = new GraphQLObjectType({
+//   name: 'PollType',
+//   fields: () => ({
+//     id: { type: GraphQLID },
+//     title: { type: GraphQLString },
+//     author: { type: UserType },
+//     users: { type: new GraphQLList(UserType) },
+//     options: { type: new GraphQLList(GraphQLString) }
+//   })
+// });
+//
+// module.exports = PollType;

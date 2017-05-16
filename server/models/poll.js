@@ -7,7 +7,11 @@ const PollSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
-  options: { type: [String] }
+  options: { type: [String] },
+  users: [{
+    type: Schema.Types.ObjectId,
+    ref: 'users'
+  }]
 });
 
 mongoose.model('poll', PollSchema);

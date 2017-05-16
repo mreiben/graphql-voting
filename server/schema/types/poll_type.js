@@ -6,7 +6,8 @@ const {
   GraphQLList
 } = graphql;
 
-const UserType = require('./user_type')
+const UserType = require('./user_type');
+// console.log(UserType);
 
 const PollType = new GraphQLObjectType({
   name: 'PollType',

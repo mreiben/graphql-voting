@@ -13,7 +13,7 @@ const mutation = new GraphQLObjectType({
       type: PollType,
       args: {
         title: { type: GraphQLString },
-        author: { type: UserType }
+        author: { type: GraphQLID }
       },
       resolve(parentValue, { title, author }) {
         return (new Poll({ title, author, options })).save()
